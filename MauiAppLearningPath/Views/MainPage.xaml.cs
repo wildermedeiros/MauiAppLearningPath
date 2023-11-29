@@ -1,8 +1,10 @@
 ﻿using Firebase.Database;
 using Firebase.Database.Query;
+using MauiAppLearningPath.Models;
+using MauiAppLearningPath.Utils;
 using System.Collections.ObjectModel;
 
-namespace MauiAppLearningPath
+namespace MauiAppLearningPath.Views
 {
     public partial class MainPage : ContentPage
     {
@@ -57,7 +59,5 @@ namespace MauiAppLearningPath
         {
             return string.IsNullOrEmpty(NoteDescriptionEntry.Text);
         }
-
-        
     }
 }

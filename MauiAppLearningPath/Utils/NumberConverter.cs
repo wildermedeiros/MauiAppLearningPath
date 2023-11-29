@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MauiAppLearningPath
+namespace MauiAppLearningPath.Utils
 {
     public static class NumberConverter
     {
