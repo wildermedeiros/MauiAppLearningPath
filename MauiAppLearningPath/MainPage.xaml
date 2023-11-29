@@ -11,13 +11,10 @@
 
             <Entry 
                 x:Name="NoteDescriptionEntry" 
-                Placeholder="Something to write" />
-
-            <Button
-                x:Name="SubmitButton"
-                Text="+"
-                Clicked="OnSubmit"
-                HorizontalOptions="Center" />
+                Placeholder="Express yourself" 
+                Completed="NoteDescriptionEntryOnCompleted"
+                ClearButtonVisibility="WhileEditing" 
+                ReturnType="Send" />
 
             <Label
                 Text="Your notes:"
