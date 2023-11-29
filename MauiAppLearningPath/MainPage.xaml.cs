@@ -1,24 +1,43 @@
-﻿namespace MauiAppLearningPath
+﻿using Firebase.Database;
+using Firebase.Database.Query;
+using System.Collections.ObjectModel;
+
+namespace MauiAppLearningPath
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
+        FirebaseClient firebaseClient = new FirebaseClient("https://mauifirebasesilicon-default-rtdb.firebaseio.com/");
+
+        public ObservableCollection<Note> Notes{ get; set; } = new ObservableCollection<Note>();
+
 
         public MainPage()
         {
             InitializeComponent();
+
+            BindingContext = this;
+
+            var collection = firebaseClient
+                .Child("Notes")
+                .AsObservable<Note>()
+                .Subscribe((item) =>
+                {
+                    if (item.Object != null)
+                    {
+                        Notes.Add(new Note
+                        {
+                            Description = item.Object.Description,
+                        });
+                    }
+                });
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private void OnSubmit(object sender, EventArgs e)
         {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            firebaseClient.Child("Notes").PostAsync(new Note
+            {
+                Description = NoteDescriptionEntry.Text,
+            });
         }
     }
 
