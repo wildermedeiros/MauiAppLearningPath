@@ -13,14 +13,16 @@ namespace MauiAppLearningPath.Views
             InitializeComponent();
         }
 
-        private void NoteDescriptionEditorOnClicked(object sender, EventArgs e)
+        private async void NoteDescriptionEditorOnClicked(object sender, EventArgs e)
         {
             if(!IsDescriptionNullOrEmpty())
             {
-                FirebaseClient.Child("Notes").PostAsync(new Note
+                await FirebaseClient.Child("Notes").PostAsync(new Note
                 {
                     Description = NoteDescriptionEditor.Text,
                 });
+                await SendButton.ScaleTo(0.95, 100);
+                await SendButton.ScaleTo(1, 100);
                 NoteDescriptionEditor.Text = "";
             }
         }

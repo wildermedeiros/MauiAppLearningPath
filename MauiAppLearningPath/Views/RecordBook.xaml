@@ -14,7 +14,10 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Frame
-                            Margin="3">
+                        Margin="3"
+                        BackgroundColor="Transparent"
+                        BorderColor="SlateGray"
+                        >
                         <Label Text="{Binding Description}" />
                     </Frame>
                 </DataTemplate>

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiAppLearningPath.Views.MainPage">
     <Grid 
-        RowDefinitions="6*, *"
+        RowDefinitions="*, 50"
         RowSpacing="6"
         Margin="10">
         
@@ -11,13 +11,17 @@
             Grid.Row="0"
             x:Name="NoteDescriptionEditor" 
             Placeholder="Express yourself" 
-            Keyboard="Chat"/>
+            Keyboard="Chat"
+            AutoSize="TextChanges"
+            />
 
         <Button
             Grid.Row="1"
             Text="Send"
-            Clicked="NoteDescriptionEditorOnClicked">
-            
+            Clicked="NoteDescriptionEditorOnClicked"
+            IsEnabled="true"
+            x:Name="SendButton"
+            BackgroundColor="GhostWhite">
         </Button>
     </Grid>    
 </ContentPage>
