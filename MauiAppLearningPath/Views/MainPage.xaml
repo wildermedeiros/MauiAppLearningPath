@@ -2,20 +2,22 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiAppLearningPath.Views.MainPage">
+    <Grid 
+        RowDefinitions="6*, *"
+        RowSpacing="6"
+        Margin="10">
+        
+        <Editor
+            Grid.Row="0"
+            x:Name="NoteDescriptionEditor" 
+            Placeholder="Express yourself" 
+            Keyboard="Chat"/>
 
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center" >
-
-            <Entry 
-                x:Name="NoteDescriptionEntry" 
-                Placeholder="Express yourself" 
-                Completed="NoteDescriptionEntryOnCompleted"
-                ClearButtonVisibility="WhileEditing" 
-                ReturnType="Send" />
-        </VerticalStackLayout>
-    </ScrollView>
-    
+        <Button
+            Grid.Row="1"
+            Text="Send"
+            Clicked="NoteDescriptionEditorOnClicked">
+            
+        </Button>
+    </Grid>    
 </ContentPage>

@@ -3,21 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiAppLearningPath.Views.RecordBook">
 
-    <ScrollView>
-        <VerticalStackLayout>
-            <Label
-                Text="Your notes:"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="24"
-                HorizontalOptions="Center" />
+    <ScrollView
+        Margin="8">
+        <CollectionView 
+                ItemsSource="{Binding Notes}"
+                EmptyView="No notes to display"
+                ItemsUpdatingScrollMode="KeepLastItemInView" 
+                >
 
-            <CollectionView ItemsSource="{Binding Notes}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame
+                            Margin="3">
                         <Label Text="{Binding Description}" />
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </ScrollView>
 </ContentPage>

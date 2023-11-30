@@ -1,8 +1,6 @@
 ﻿using Firebase.Database;
 using Firebase.Database.Query;
 using MauiAppLearningPath.Models;
-using MauiAppLearningPath.Utils;
-using System.Collections.ObjectModel;
 
 namespace MauiAppLearningPath.Views
 {
@@ -15,21 +13,21 @@ namespace MauiAppLearningPath.Views
             InitializeComponent();
         }
 
-        private void NoteDescriptionEntryOnCompleted(object sender, EventArgs e)
+        private void NoteDescriptionEditorOnClicked(object sender, EventArgs e)
         {
-            if(!isDescriptionNullOrEmpty())
+            if(!IsDescriptionNullOrEmpty())
             {
                 FirebaseClient.Child("Notes").PostAsync(new Note
                 {
-                    Description = NoteDescriptionEntry.Text,
+                    Description = NoteDescriptionEditor.Text,
                 });
-                NoteDescriptionEntry.Text = "";
+                NoteDescriptionEditor.Text = "";
             }
         }
 
-        private bool isDescriptionNullOrEmpty()
+        private bool IsDescriptionNullOrEmpty()
         {
-            return string.IsNullOrEmpty(NoteDescriptionEntry.Text);
+            return string.IsNullOrEmpty(NoteDescriptionEditor.Text);
         }
     }
 }
